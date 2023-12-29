@@ -1,3 +1,6 @@
+# Author: Sarath 
+
+# Import all the required libraries 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import csv 
@@ -6,12 +9,15 @@ import tkinter
 
 driver=webdriver.Chrome()
 driver.maximize_window()
-driver.get("file:///C:/Users/Sarath/Documents/College/Academics/Theory/Software/DA-3/website.html")
+driver.get("website.html") # add website file directory 
 
 root=tkinter.Tk()
 root.title("Testing")
 
 def openingpage():
+    """
+    Creates and opens the GUI interface used by tkinter library
+    """
     root.geometry("200x150")
     label1 = tkinter.Label(root, text="Hi, " + getpass.getuser(), font=("Helvetica", 16))
     label1.pack(pady=20)
@@ -20,6 +26,9 @@ def openingpage():
 
 
 def testresultspage(unit_result):
+    """
+    Used to display the test result using tkinter lirary
+    """
     for child in root.winfo_children():
         child.destroy()
         
@@ -46,7 +55,10 @@ def write_data():
     write.writerow(['name','email','phone','address','card','expiry','cvv','product','quantity'])
     
 def read_data():
-    fr=open('Test_values.csv','r')
+    """
+    Used to read the test cases from the csv file
+    """
+    fr=open('Test_values.csv','r') # The CSV file which contains the test cases
     reader=csv.reader(fr)
     testvalues=[]
     for row in reader:
@@ -60,7 +72,9 @@ def read_data():
     
    
 def testdata(): 
-    
+    """
+    Used to test the website using the test cases 
+    """
     testdata=read_data()
     unit_test=[]
     result={}
